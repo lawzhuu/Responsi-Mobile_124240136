@@ -1,16 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
-  runApp(const MainApp());
+import 'services/auth_services.dart';
+import 'services/favorite_service.dart';
+import 'utils/app_routes.dart';
+import 'utils/app_theme.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+
+  await Hive.openBox(FavoriteService.boxName);
+
+  final authService = AuthService();
+  final bool isLoggedIn = await authService.isLoggedIn();
+
+  runApp(
+    HogwartsApp(
+      initialRoute: isLoggedIn ? AppRoutes.characters : AppRoutes.login,
+    ),
+  );
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class HogwartsApp extends StatelessWidget {
+  final String initialRoute;
+
+  const HogwartsApp({super.key, required this.initialRoute});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(body: Center(child: Text('Hello World!'))),
+    return MaterialApp(
+      title: 'Arsip Hogwarts',
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.magicalTheme,
+      initialRoute: initialRoute,
+      routes: AppRoutes.routes,
+      onGenerateRoute: AppRoutes.onGenerateRoute,
     );
   }
 }
