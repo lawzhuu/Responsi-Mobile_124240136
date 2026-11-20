@@ -236,7 +236,7 @@ class _SpellsViewState extends State<SpellsView> {
         ],
         onTap: (index) {
           if (index == 0) {
-            Navigator.pushReplacementNamed(context, AppRoutes.characters);
+            Navigator.pushReplacementNamed(context, AppRoutes.books);
           } else if (index == 2) {
             Navigator.pushNamed(context, AppRoutes.favoriteSpells);
           }

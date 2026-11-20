@@ -17,7 +17,7 @@ void main() async {
 
   runApp(
     HogwartsApp(
-      initialRoute: isLoggedIn ? AppRoutes.characters : AppRoutes.login,
+      initialRoute: isLoggedIn ? AppRoutes.books : AppRoutes.login,
     ),
   );
 }

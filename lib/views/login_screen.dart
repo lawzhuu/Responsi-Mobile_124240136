@@ -69,7 +69,7 @@ class _LoginViewState extends State<LoginView> {
       );
 
       // Navigasi ke Halaman Karakter
-      Navigator.pushReplacementNamed(context, AppRoutes.characters);
+      Navigator.pushReplacementNamed(context, AppRoutes.books);
     } else {
       // muncul pesan kesalahan kalau kredensial salah
       ScaffoldMessenger.of(context).showSnackBar(
