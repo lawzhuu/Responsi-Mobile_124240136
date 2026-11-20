@@ -15,7 +15,7 @@ class CharacterCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final houseColor = AppTheme.getHouseColor(character.hogwartsHouse);
+    final houseColor = AppTheme.getHouseColor(character.originalTitle);
 
     return Card(
       clipBehavior: Clip.antiAlias,
@@ -34,9 +34,9 @@ class CharacterCard extends StatelessWidget {
                 children: [
                   Container(
                     color: const Color(0xFF0F172A),
-                    child: character.image.isNotEmpty
+                    child: character.pages.isNotEmpty
                         ? Image.network(
-                            character.image,
+                            character.pages,
                             fit: BoxFit.cover,
                             alignment: Alignment.topCenter,
                             loadingBuilder: (context, child, progress) {
@@ -103,8 +103,8 @@ class CharacterCard extends StatelessWidget {
                   ),
 
                   // Label nama house nya di kanan atas tiap card
-                  if (character.hogwartsHouse.isNotEmpty &&
-                      character.hogwartsHouse.toLowerCase() != 'unknown')
+                  if (character.originalTitle.isNotEmpty &&
+                      character.originalTitle.toLowerCase() != 'unknown')
                     Positioned(
                       top: 8,
                       right: 8,
@@ -128,7 +128,7 @@ class CharacterCard extends StatelessWidget {
                           ],
                         ),
                         child: Text(
-                          character.hogwartsHouse,
+                          character.originalTitle,
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 10,
@@ -150,7 +150,7 @@ class CharacterCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    character.fullName,
+                    character.number,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
@@ -161,10 +161,10 @@ class CharacterCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 3),
                   Text(
-                    character.interpretedBy.isNotEmpty
-                        ? 'Pemeran: ${character.interpretedBy}'
-                        : (character.nickname.isNotEmpty
-                              ? 'Panggilan: "${character.nickname}"'
+                    character.releaseDate.isNotEmpty
+                        ? 'Pemeran: ${character.releaseDate}'
+                        : (character.title.isNotEmpty
+                              ? 'Panggilan: "${character.title}"'
                               : 'Karakter Hogwarts'),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,

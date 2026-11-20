@@ -11,14 +11,14 @@ class CharacterDetailView extends StatelessWidget {
   // ambil warna sesuai house tiap karakter
   @override
   Widget build(BuildContext context) {
-    final houseColor = AppTheme.getHouseColor(character.hogwartsHouse);
+    final houseColor = AppTheme.getHouseColor(character.originalTitle);
 
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          character.nickname.isNotEmpty
-              ? character.nickname
-              : character.fullName,
+          character.title.isNotEmpty
+              ? character.title
+              : character.number,
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new_rounded),
@@ -54,9 +54,9 @@ class CharacterDetailView extends StatelessWidget {
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(17),
-                  child: character.image.isNotEmpty
+                  child: character.pages.isNotEmpty
                       ? Image.network(
-                          character.image,
+                          character.pages,
                           fit: BoxFit.cover,
                           alignment: Alignment.topCenter,
                           loadingBuilder: (context, child, progress) {
@@ -106,7 +106,7 @@ class CharacterDetailView extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    character.fullName,
+                    character.title,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       color: AppTheme.antiqueGold,
@@ -129,9 +129,9 @@ class CharacterDetailView extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      character.hogwartsHouse.isNotEmpty &&
-                              character.hogwartsHouse.toLowerCase() != 'unknown'
-                          ? 'House ${character.hogwartsHouse}'
+                      character.originalTitle.isNotEmpty &&
+                              character.originalTitle.toLowerCase() != 'unknown'
+                          ? 'House ${character.originalTitle}'
                           : 'House Unknown',
                       style: const TextStyle(
                         color: Colors.white,
@@ -172,35 +172,35 @@ class CharacterDetailView extends StatelessWidget {
             _buildInfoTile(
               icon: Icons.badge_rounded,
               title: 'Nama Lengkap',
-              value: character.fullName,
+              value: character.number,
             ),
             _buildInfoTile(
               icon: Icons.tag_rounded,
               title: 'Nama Panggilan',
-              value: character.nickname.isNotEmpty
-                  ? character.nickname
+              value: character.title.isNotEmpty
+                  ? character.title
                   : 'Tidak ada',
             ),
             _buildInfoTile(
               icon: Icons.shield_rounded,
               title: 'Hogwarts House',
-              value: character.hogwartsHouse.isNotEmpty
-                  ? character.hogwartsHouse
+              value: character.originalTitle.isNotEmpty
+                  ? character.originalTitle
                   : 'Tidak ditentukan',
               accentColor: houseColor,
             ),
             _buildInfoTile(
               icon: Icons.movie_creation_rounded,
               title: 'Pemeran / Aktor',
-              value: character.interpretedBy.isNotEmpty
-                  ? character.interpretedBy
+              value: character.releaseDate.isNotEmpty
+                  ? character.releaseDate
                   : 'Tidak tercatat dalam daftar film',
             ),
             _buildInfoTile(
               icon: Icons.cake_rounded,
               title: 'Tanggal Lahir',
-              value: character.birthdate.isNotEmpty
-                  ? character.birthdate
+              value: character.cover.isNotEmpty
+                  ? character.cover
                   : 'Tanggal tidak diketahui',
             ),
             _buildInfoTile(
@@ -208,10 +208,7 @@ class CharacterDetailView extends StatelessWidget {
               title: 'Indeks Arsip',
               value: '#${character.index}',
             ),
-
-            // Card Daftar Anak/Keturunan
-            _buildChildrenCard(character.children),
-            const SizedBox(height: 24),
+            
           ],
         ),
       ),
