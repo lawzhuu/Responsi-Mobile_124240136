@@ -46,7 +46,7 @@ class _CharacterViewState extends State<CharacterView> {
             Icon(Icons.logout_rounded, color: AppTheme.antiqueGold),
             SizedBox(width: 10),
             Text(
-              'Keluar dari Hogwarts?',
+              'Keluar dari Sistem?',
               style: TextStyle(
                 color: AppTheme.antiqueGold,
                 fontSize: 18,
@@ -155,7 +155,7 @@ class _CharacterViewState extends State<CharacterView> {
           if (characters == null || characters.isEmpty) {
             return const Center(
               child: Text(
-                'Tidak ada karakter yang ditemukan dalam arsip.',
+                'Karakter Tidak Ditemukan.',
                 style: TextStyle(color: AppTheme.textMuted),
               ),
             );

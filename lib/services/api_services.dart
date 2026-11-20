@@ -5,14 +5,14 @@ import '../models/character.dart';
 import '../models/spells.dart';
 
 class ApiService {
-  static const String _baseUrl = 'https://potterapi-fedeperin.vercel.app/en';
+  static const String _baseUrl = 'https://potterapi-fedeperin.vercel.app/en/books';
   static const Duration _timeout = Duration(seconds: 15);
 
   /// Mengambil daftar karakter dari Potter API
   Future<List<Character>> fetchCharacters() async {
     try {
       final response = await http
-          .get(Uri.parse('$_baseUrl/characters'))
+          .get(Uri.parse('$_baseUrl/character'))
           .timeout(_timeout);
 
       if (response.statusCode == 200) {

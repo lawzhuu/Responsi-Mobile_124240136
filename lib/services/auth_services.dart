@@ -5,8 +5,8 @@ class AuthService {
   static const String _keyUsername = 'logged_in_username';
 
   // Kredensial untuk login
-  static const String _validUsername = 'admin';
-  static const String _validPassword = 'admin123';
+  static const String _validUsername = 'rhito';
+  static const String _validPassword = 'rhito123';
 
   /// Validasi kredensial
   Future<bool> login(String username, String password) async {

@@ -30,7 +30,7 @@ class HogwartsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Arsip Hogwarts',
+      title: ' ',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.magicalTheme,
       initialRoute: initialRoute,

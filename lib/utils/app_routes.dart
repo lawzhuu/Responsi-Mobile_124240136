@@ -10,6 +10,7 @@ import '../views/spells_view.dart';
 // Pengaturan rute dan navigasi terpusat pada aplikasi
 class AppRoutes {
   static const String login = '/login';
+  static const String books = '/books';
   static const String characters = '/characters';
   static const String characterDetail = '/character-detail';
   static const String spells = '/spells';
